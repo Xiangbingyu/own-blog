@@ -1,0 +1,84 @@
+{
+  "views": {
+    "projects": {
+      "pageTitle": "DreamGong | PROJECT",
+      "heading": "PROJECT",
+      "description": "Projects column: all articles sorted by date.",
+      "category": "projects",
+      "sort": "dateDesc",
+      "display": "grid-3"
+    },
+    "media": {
+      "pageTitle": "DreamGong | MEDIA",
+      "heading": "MEDIA",
+      "description": "Media column: all articles sorted by date.",
+      "category": "media",
+      "sort": "dateDesc",
+      "display": "grid-3"
+    },
+    "logs": {
+      "pageTitle": "DreamGong | LOGS",
+      "heading": "LOGS",
+      "description": "Logs column: all articles sorted by date.",
+      "category": "logs",
+      "sort": "dateDesc",
+      "display": "grid-3"
+    },
+    "career": {
+      "pageTitle": "DreamGong | CAREER",
+      "heading": "CAREER",
+      "description": "Career column: all articles sorted by date.",
+      "category": "career",
+      "sort": "dateDesc",
+      "display": "grid-3"
+    },
+    "life": {
+      "pageTitle": "DreamGong | LIFE",
+      "heading": "LIFE",
+      "description": "Life column: all articles sorted by date.",
+      "category": "life",
+      "sort": "dateDesc",
+      "display": "grid-3"
+    },
+    "futureLab": {
+      "pageTitle": "DreamGong | FUTURE LAB",
+      "heading": "FUTURE LAB",
+      "description": "Featured home section page: sorted by featured order.",
+      "category": "futureLab",
+      "sort": "featuredOrderAsc",
+      "display": "grid-3"
+    },
+    "mediaRank": {
+      "pageTitle": "DreamGong | MEDIA RANK",
+      "heading": "MEDIA RANK",
+      "description": "Featured home section page: ranked by personal preference.",
+      "category": "mediaRank",
+      "sort": "rankAsc",
+      "display": "rank"
+    },
+    "ideaLogs": {
+      "pageTitle": "DreamGong | IDEA LOGS Featured",
+      "heading": "IDEA LOGS",
+      "description": "Featured home section page: sorted by featured order.",
+      "category": "ideaLogs",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2"
+    },
+    "careerExperience": {
+      "pageTitle": "DreamGong | Career Experience Featured",
+      "heading": "Career Experience",
+      "description": "Featured home section page: sorted by featured order.",
+      "category": "careerExperience",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2"
+    },
+    "lifeStream": {
+      "pageTitle": "DreamGong | Life Stream Featured",
+      "heading": "Life Stream",
+      "description": "Featured home section page: sorted by featured order.",
+      "category": "lifeStream",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2"
+    }
+  }
+}

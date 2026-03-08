@@ -1,0 +1,89 @@
+{
+  "brand": "DREAMGONG",
+  "articlePageTitle": "DreamGong | Article",
+  "navigation": [
+    { "key": "projects", "label": "Projects", "viewKey": "projects", "showInNav": true },
+    { "key": "media", "label": "Media", "viewKey": "media", "showInNav": true },
+    { "key": "logs", "label": "Logs", "viewKey": "logs", "showInNav": true },
+    { "key": "career", "label": "Career", "viewKey": "career", "showInNav": true },
+    { "key": "life", "label": "Life", "viewKey": "life", "showInNav": true },
+    { "key": "connect", "label": "Connect", "viewKey": "connect", "showInNav": false }
+  ],
+  "home": {
+    "pageTitle": "DreamGong | Home",
+    "hero": {
+      "status": "System Status: Operational",
+      "title": "Building the <span class=\"bg-primary px-2\">Neural</span> Frontier",
+      "subtitle": "Using a retro pixel style to present projects, rankings, logs, and life records.",
+      "badge": "LIVE_FEED: ON",
+      "panelText": "DREAMGONG",
+      "actions": [
+        { "label": "Enter Projects", "viewKey": "projects", "variant": "primary" },
+        { "label": "View Logs", "viewKey": "logs", "variant": "secondary" }
+      ]
+    }
+  },
+  "featuredSections": [
+    {
+      "id": "future-lab",
+      "title": "FUTURE LAB",
+      "viewKey": "futureLab",
+      "sourceCategory": "futureLab",
+      "sort": "featuredOrderAsc",
+      "display": "grid-3",
+      "limit": 3
+    },
+    {
+      "id": "idea-logs",
+      "title": "IDEA LOGS",
+      "viewKey": "ideaLogs",
+      "sourceCategory": "ideaLogs",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2",
+      "limit": 4
+    },
+    {
+      "id": "career-experience",
+      "title": "Career Experience",
+      "viewKey": "careerExperience",
+      "sourceCategory": "careerExperience",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2",
+      "limit": 4
+    },
+    {
+      "id": "media-rank",
+      "title": "MEDIA RANK",
+      "viewKey": "mediaRank",
+      "sourceCategory": "mediaRank",
+      "sort": "rankAsc",
+      "display": "rank",
+      "limit": 3
+    },
+    {
+      "id": "life-stream",
+      "title": "Life Stream",
+      "viewKey": "lifeStream",
+      "sourceCategory": "lifeStream",
+      "sort": "featuredOrderAsc",
+      "display": "grid-2",
+      "limit": 4
+    }
+  ],
+  "connect": {
+    "pageTitle": "DreamGong | Connect",
+    "heading": "Connect",
+    "cards": [
+      { "label": "Email", "value": "dreamgong@example.com" },
+      { "label": "GitHub", "value": "github.com/dreamgong" },
+      { "label": "Bilibili", "value": "bilibili.com/@dreamgong" },
+      { "label": "X / Twitter", "value": "x.com/dreamgong" }
+    ]
+  },
+  "footer": {
+    "description": "An extensible personal blog scaffold driven by JSON metadata and Markdown content.",
+    "navigationTitle": "Navigation",
+    "connectTitle": "Connect",
+    "connectDescription": "To maintain this site, update JSON files in data and Markdown files in content."
+  }
+}

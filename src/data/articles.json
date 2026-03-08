@@ -1,0 +1,54 @@
+[
+  {
+    "id": "media-rank-steins-gate",
+    "title": "TOP 1《命运石之门》：时间闭环与选择代价",
+    "summary": "最强的是叙事闭环与情绪回收，兼具设定严谨和角色成长。",
+    "date": "2026-03-09",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 1,
+    "mediaType": "Anime",
+    "rank": 1,
+    "tags": ["Ranking", "Anime", "Sci-Fi"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-steins-gate.md"
+  },
+  {
+    "id": "media-rank-fullmetal-alchemist",
+    "title": "TOP 2《钢之炼金术士》：群像与主题的平衡",
+    "summary": "在热血叙事中保持思想深度，群像塑造和节奏都非常稳定。",
+    "date": "2026-03-08",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 2,
+    "mediaType": "Anime",
+    "rank": 2,
+    "tags": ["Ranking", "Anime", "Epic"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-fullmetal-alchemist.md"
+  },
+  {
+    "id": "media-rank-made-in-abyss",
+    "title": "TOP 3《来自深渊》：童话外表下的残酷探索",
+    "summary": "世界构建出色，情绪反差极强，音乐与氛围表现顶级。",
+    "date": "2026-03-07",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 3,
+    "mediaType": "Anime",
+    "rank": 3,
+    "tags": ["Ranking", "Anime", "Adventure"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-made-in-abyss.md"
+  },
+  {
+    "id": "media-rank-attack-on-titan",
+    "title": "TOP 4《进击的巨人》：从生存恐惧到时代寓言",
+    "summary": "叙事野心与讨论深度兼备，立场冲突与主题表达都很有力量。",
+    "date": "2026-03-06",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 4,
+    "mediaType": "Anime",
+    "rank": 4,
+    "tags": ["Ranking", "Anime", "War"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-attack-on-titan.md"
+  }
+]
