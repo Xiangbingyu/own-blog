@@ -70,16 +70,6 @@
       "limit": 4
     }
   ],
-  "connect": {
-    "pageTitle": "DreamGong | Connect",
-    "heading": "Connect",
-    "cards": [
-      { "label": "Email", "value": "dreamgong@example.com" },
-      { "label": "GitHub", "value": "github.com/dreamgong" },
-      { "label": "Bilibili", "value": "bilibili.com/@dreamgong" },
-      { "label": "X / Twitter", "value": "x.com/dreamgong" }
-    ]
-  },
   "footer": {
     "description": "An extensible personal blog scaffold driven by JSON metadata and Markdown content.",
     "navigationTitle": "Navigation",

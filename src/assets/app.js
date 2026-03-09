@@ -174,9 +174,6 @@ function resolveTitle(siteConfig, subpageConfig, pageType, viewKey) {
     }
     return siteConfig.home.pageTitle;
   }
-  if (pageType === "connect") {
-    return siteConfig.connect.pageTitle;
-  }
   if (pageType === "article") {
     return siteConfig.articlePageTitle;
   }
@@ -255,8 +252,6 @@ function renderShell(siteConfig, activeViewKey) {
   const navItems = siteConfig.navigation.filter((item) => item.showInNav);
   const connectItem = siteConfig.navigation.find((item) => item.key === "connect");
   const connectLabel = connectItem ? connectItem.label : "Connect";
-  const isConnectPage = document.body.dataset.page === "connect";
-  const connectActiveClass = isConnectPage ? "underline decoration-4" : "";
   const navHtml = navItems
     .map((item) => {
       const activeClass = item.viewKey === activeViewKey ? "underline decoration-4" : "";
@@ -274,7 +269,10 @@ function renderShell(siteConfig, activeViewKey) {
       </div>
       <div class="flex items-center gap-6">
         <nav class="hidden lg:flex items-center gap-6">${navHtml}</nav>
-        <a class="text-charcoal text-sm font-black uppercase hover:underline decoration-4 ${connectActiveClass}" href="./connect.html">${connectLabel}</a>
+        <a class="bg-charcoal text-primary px-4 py-2 font-bold text-xs uppercase rounded-sm hover:bg-opacity-90 flex items-center gap-2" href="./connect.html">
+          <span class="material-symbols-outlined text-sm">sensors</span>
+          ${connectLabel}
+        </a>
       </div>
     </header>
   `;
@@ -305,7 +303,28 @@ function renderShell(siteConfig, activeViewKey) {
   `;
 }
 
-function renderHome(siteConfig, articles) {
+function buildContactCard(item, titleTag, bodyClass) {
+  const isClickable = item && item.clickable !== false && item.href;
+  const cardClass = `border-4 border-charcoal bg-white p-6 ${isClickable ? "hover:bg-primary transition-colors cursor-pointer" : ""} block`;
+  const titleHtml = `<${titleTag} class="text-xl font-black uppercase mb-2">${item.label}</${titleTag}>`;
+  const bodyHtml = `<p class="${bodyClass}">${item.value}</p>`;
+  if (isClickable) {
+    return `
+      <a class="${cardClass}" href="${item.href}" target="_blank" rel="noopener noreferrer">
+        ${titleHtml}
+        ${bodyHtml}
+      </a>
+    `;
+  }
+  return `
+    <div class="${cardClass}">
+      ${titleHtml}
+      ${bodyHtml}
+    </div>
+  `;
+}
+
+function renderHome(siteConfig, articles, connectProfile) {
   const root = document.getElementById("page-root");
   const hero = siteConfig.home.hero;
   const heroActionsHtml = hero.actions
@@ -328,6 +347,21 @@ function renderHome(siteConfig, articles) {
       `;
     })
     .join("");
+  const connectCardsHtml = (connectProfile?.contacts || [])
+    .map((item) => buildContactCard(item, "h3", "text-sm font-medium"))
+    .join("");
+  const connectSectionHtml = connectCardsHtml
+    ? `
+        <section class="mb-20">
+          <div class="flex items-center justify-between mb-10 border-b-4 border-charcoal pb-4">
+            <h2 class="text-3xl font-black uppercase tracking-tighter">Connect</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${connectCardsHtml}
+          </div>
+        </section>
+      `
+    : "";
   root.innerHTML = `
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
       <div class="flex flex-col gap-6 order-2 lg:order-1">
@@ -352,6 +386,7 @@ function renderHome(siteConfig, articles) {
       </div>
     </section>
     ${featuredHtml}
+    ${connectSectionHtml}
   `;
 }
 
@@ -367,24 +402,73 @@ function renderSubpage(subpageConfig, articles, viewKey) {
         <h1 class="text-4xl font-black uppercase tracking-tighter">${viewConfig.heading}</h1>
         <p class="text-sm font-medium text-charcoal/80 mt-3">${viewConfig.description}</p>
       </div>
+      <a class="inline-flex items-center gap-2 border-4 border-charcoal bg-white text-charcoal px-4 py-2 font-black uppercase tracking-wider rounded-sm hover:bg-cream transition-colors mb-8" href="./index.html">
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        Back to Home
+      </a>
       ${renderListByDisplay(sorted, viewConfig.display)}
     </section>
   `;
 }
 
-function renderConnect(siteConfig) {
+function renderConnect(profile) {
   const root = document.getElementById("page-root");
-  const cardsHtml = siteConfig.connect.cards
-    .map((item) => `
-      <div class="bg-white border-4 border-charcoal p-6">
-        <h2 class="text-xl font-black uppercase mb-2">${item.label}</h2>
-        <p class="font-medium">${item.value}</p>
-      </div>
-    `)
+  const cardsHtml = (profile.contacts || [])
+    .map((item) => buildContactCard(item, "h2", "font-medium"))
     .join("");
+  const interestsHtml = (profile.interests || [])
+    .map((item) => `<span class="text-[10px] font-bold border border-charcoal px-2 py-0.5 uppercase">${item}</span>`)
+    .join("");
+  const buildGalleryTrack = (items) => {
+    const safeItems = Array.isArray(items) ? items : [];
+    const duplicated = [...safeItems, ...safeItems];
+    return duplicated
+      .map((item) => `
+        <div class="marquee-item border-2 border-charcoal bg-cream overflow-hidden pixel-shadow">
+          <img src="${item.src}" alt="${item.alt || ""}">
+        </div>
+      `)
+      .join("");
+  };
+  const lifeGalleryHtml = buildGalleryTrack(profile.lifeGallery);
+  const portfolioGalleryHtml = buildGalleryTrack(profile.portfolioGallery);
   root.innerHTML = `
-    <section class="max-w-3xl">
-      <h1 class="text-4xl font-black uppercase tracking-tighter border-b-4 border-charcoal pb-4 mb-8">${siteConfig.connect.heading}</h1>
+    <section class="max-w-4xl">
+      <div class="border-b-4 border-charcoal pb-4 mb-8">
+        <h1 class="text-4xl font-black uppercase tracking-tighter">${profile.heading || "Connect"}</h1>
+        <p class="text-sm font-medium text-charcoal/80 mt-3">${profile.motto || ""}</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 mb-12">
+        <div class="border-4 border-charcoal bg-cream p-3 pixel-shadow">
+          <img class="w-full aspect-square object-cover" src="${profile.avatarUrl}" alt="${profile.name || ""}">
+        </div>
+        <div class="flex flex-col gap-4">
+          <div>
+            <div class="text-xl font-black uppercase">${profile.name || ""}</div>
+            <div class="text-sm font-bold uppercase tracking-widest text-charcoal/70 mt-1">${profile.role || ""}</div>
+          </div>
+          <p class="text-sm font-medium leading-relaxed text-charcoal/80">${profile.bio || ""}</p>
+          <div class="flex flex-wrap gap-2">${interestsHtml}</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-10 mb-12">
+        <div>
+          <div class="text-sm font-black uppercase tracking-widest mb-3">Life Photos</div>
+          <div class="marquee">
+            <div class="marquee-track">
+              ${lifeGalleryHtml}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm font-black uppercase tracking-widest mb-3">Portfolio</div>
+          <div class="marquee">
+            <div class="marquee-track slow">
+              ${portfolioGalleryHtml}
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         ${cardsHtml}
       </div>
@@ -437,12 +521,15 @@ async function init() {
   document.title = resolveTitle(siteConfig, subpageConfig, pageType, viewKey);
   renderShell(siteConfig, activeViewKey);
   if (pageType === "connect") {
-    renderConnect(siteConfig);
+    const connectProfile = await loadJson("./data/connect-profile.json", "Failed to load connect profile");
+    document.title = connectProfile.pageTitle || siteConfig.home.pageTitle;
+    renderConnect(connectProfile);
     return;
   }
   const articles = await loadJson("./data/articles.json", "Failed to load article data");
   if (pageType === "home") {
-    renderHome(siteConfig, articles);
+    const connectProfile = await loadJson("./data/connect-profile.json", "Failed to load connect profile");
+    renderHome(siteConfig, articles, connectProfile);
     return;
   }
   if (pageType === "subpage") {
