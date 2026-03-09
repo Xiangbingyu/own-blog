@@ -248,6 +248,7 @@ function setupPageTransition() {
 
 function renderShell(siteConfig, activeViewKey) {
   const header = document.getElementById("site-header");
+  header.className = "sticky top-0 z-50 w-full";
   const footer = document.getElementById("site-footer");
   const navItems = siteConfig.navigation.filter((item) => item.showInNav);
   const connectItem = siteConfig.navigation.find((item) => item.key === "connect");
@@ -260,7 +261,7 @@ function renderShell(siteConfig, activeViewKey) {
     .join("");
   const homeActiveClass = activeViewKey ? "" : "underline decoration-4";
   header.innerHTML = `
-    <header class="flex items-center justify-between border-b-4 border-charcoal bg-primary px-6 md:px-20 py-4 sticky top-0 z-50">
+    <header class="flex items-center justify-between border-b-4 border-charcoal bg-primary px-6 md:px-20 py-4">
       <div class="flex items-center gap-3">
         <div class="bg-charcoal p-1 rounded-sm">
           <span class="material-symbols-outlined text-primary text-2xl">terminal</span>
