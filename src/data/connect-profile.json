@@ -64,6 +64,6 @@
     { "label": "Bilibili", "value": "space.bilibili.com/527454909", "href": "https://space.bilibili.com/527454909?spm_id_from=333.33.0.0" },
     { "label": "Email", "value": "2473679079@qq.com", "clickable": false },
     { "label": "QQ", "value": "2473679079", "href": "", "clickable": false },
-    { "label": "微信", "value": "xby20040808", "href": "", "clickable": false }
+    { "label": "WeChat", "value": "xby20040808", "href": "", "clickable": false }
   ]
 }

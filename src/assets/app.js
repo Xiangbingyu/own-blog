@@ -305,7 +305,7 @@ function renderShell(siteConfig, activeViewKey) {
 
 function buildContactCard(item, titleTag, bodyClass) {
   const isClickable = item && item.clickable !== false && item.href;
-  const cardClass = `border-4 border-charcoal bg-white p-6 ${isClickable ? "hover:bg-primary transition-colors cursor-pointer" : ""} block`;
+  const cardClass = `border-4 border-charcoal p-6 ${isClickable ? "bg-white hover:bg-primary transition-colors cursor-pointer" : "bg-cream"} block`;
   const titleHtml = `<${titleTag} class="text-xl font-black uppercase mb-2">${item.label}</${titleTag}>`;
   const bodyHtml = `<p class="${bodyClass}">${item.value}</p>`;
   if (isClickable) {
@@ -379,15 +379,382 @@ function renderHome(siteConfig, articles, connectProfile) {
         </div>
       </div>
       <div class="order-1 lg:order-2 flex justify-center">
-        <div class="relative w-full aspect-square max-w-md bg-cream border-4 border-charcoal p-4 pixel-shadow">
-          <div class="w-full h-full bg-charcoal flex items-center justify-center text-primary text-center text-4xl font-black px-6">${hero.panelText}</div>
-          <div class="absolute top-4 left-4 bg-primary text-charcoal px-2 py-1 text-[10px] font-bold uppercase tracking-tighter">${hero.badge}</div>
+        <div class="grid w-full max-w-5xl grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-4">
+          <div class="flex w-full max-w-md flex-col gap-4">
+          <div class="relative w-full aspect-square bg-cream border-4 border-charcoal p-4 pixel-shadow" data-eye-panel>
+            <div class="eye-antenna" aria-hidden="true">
+              <div class="eye-antenna-head"></div>
+              <div class="eye-antenna-stem"></div>
+              <div class="eye-antenna-base"></div>
+            </div>
+            <div class="eye-panel">
+              <div class="eye-socket" data-eye-socket>
+                <div class="eye-iris" data-eye-iris>
+                  <div class="eye-pupil"></div>
+                </div>
+                <div class="eye-shine"></div>
+              </div>
+            </div>
+            <button type="button" class="eye-lock" data-eye-lock data-locked="false">Lock</button>
+          </div>
+          <div class="relative w-full max-w-[200px] self-center bg-cream border-4 border-charcoal p-4 pixel-shadow">
+            <div class="mouth-panel">
+              <div class="mouth-lip mouth-lip--top"></div>
+              <div class="mouth-lip mouth-lip--bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-panel" data-chat-panel data-expanded="false">
+          <div class="chat-header">
+            <button type="button" class="chat-clear" data-chat-clear>
+              <span class="material-symbols-outlined">delete</span>
+              <span>Clear</span>
+            </button>
+            <button type="button" class="chat-toggle" data-chat-toggle>
+              <span class="material-symbols-outlined">unfold_more</span>
+              <span>Expand</span>
+            </button>
+          </div>
+          <div class="chat-split">
+            <div class="chat-section">
+              <div class="chat-section-title">Replies</div>
+              <div class="chat-bubbles" data-chat-bubbles></div>
+            </div>
+            <div class="chat-divider"></div>
+            <div class="chat-section">
+              <div class="chat-section-title">Questions</div>
+              <div class="chat-questions" data-chat-questions></div>
+            </div>
+          </div>
+          <div class="chat-merged" data-chat-merged></div>
+          <div class="chat-input">
+            <input class="chat-input-field" type="text" placeholder="Your question" data-chat-input>
+            <button class="chat-send" type="button" data-chat-send disabled>Send</button>
+          </div>
+        </div>
         </div>
       </div>
     </section>
     ${featuredHtml}
     ${connectSectionHtml}
   `;
+}
+
+function setupHeroEye() {
+  const panel = document.querySelector("[data-eye-panel]");
+  const socket = document.querySelector("[data-eye-socket]");
+  const iris = document.querySelector("[data-eye-iris]");
+  const lockButton = document.querySelector("[data-eye-lock]");
+  if (!panel || !socket || !iris) {
+    return;
+  }
+  const storageKey = "heroEyeLocked";
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let frameId = 0;
+  let locked = false;
+  const setLocked = (nextLocked) => {
+    locked = nextLocked;
+    if (lockButton) {
+      lockButton.dataset.locked = locked ? "true" : "false";
+      lockButton.textContent = locked ? "Locked" : "Lock";
+      lockButton.setAttribute("aria-pressed", locked ? "true" : "false");
+    }
+    try {
+      window.localStorage.setItem(storageKey, locked ? "true" : "false");
+    } catch (error) {
+      void error;
+    }
+    targetX = 0;
+    targetY = 0;
+    if (locked) {
+      targetX = 0;
+      targetY = 0;
+    }
+  };
+  const loadLockedState = () => {
+    try {
+      return window.localStorage.getItem(storageKey) === "true";
+    } catch (error) {
+      return false;
+    }
+  };
+  const updateTarget = (clientX, clientY) => {
+    if (locked) {
+      return;
+    }
+    const rect = socket.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = clientX - centerX;
+    const dy = clientY - centerY;
+    const maxX = Math.max(0, (rect.width - iris.offsetWidth) / 2);
+    const maxY = Math.max(0, (rect.height - iris.offsetHeight) / 2);
+    const limitX = maxX * 0.6;
+    const limitY = maxY * 0.6;
+    if (dx === 0 && dy === 0) {
+      targetX = 0;
+      targetY = 0;
+      return;
+    }
+    const normX = dx / limitX;
+    const normY = dy / limitY;
+    const scale = Math.min(1, 1 / Math.sqrt(normX * normX + normY * normY));
+    targetX = dx * scale;
+    targetY = dy * scale;
+  };
+  const handleMove = (event) => {
+    updateTarget(event.clientX, event.clientY);
+  };
+  const handleTouch = (event) => {
+    const touch = event.touches && event.touches[0];
+    if (touch) {
+      updateTarget(touch.clientX, touch.clientY);
+    }
+  };
+  const handleLeave = () => {
+    if (locked) {
+      return;
+    }
+    targetX = 0;
+    targetY = 0;
+  };
+  const handleLockClick = () => {
+    setLocked(!locked);
+  };
+  const animate = () => {
+    currentX += (targetX - currentX) * 0.15;
+    currentY += (targetY - currentY) * 0.15;
+    iris.style.setProperty("--eye-x", `${currentX}px`);
+    iris.style.setProperty("--eye-y", `${currentY}px`);
+    frameId = window.requestAnimationFrame(animate);
+  };
+  window.addEventListener("mousemove", handleMove);
+  window.addEventListener("touchmove", handleTouch, { passive: true });
+  window.addEventListener("mouseleave", handleLeave);
+  if (lockButton) {
+    lockButton.addEventListener("click", handleLockClick);
+    setLocked(loadLockedState());
+  }
+  frameId = window.requestAnimationFrame(animate);
+  return () => {
+    if (frameId) {
+      window.cancelAnimationFrame(frameId);
+    }
+    window.removeEventListener("mousemove", handleMove);
+    window.removeEventListener("touchmove", handleTouch);
+    window.removeEventListener("mouseleave", handleLeave);
+    if (lockButton) {
+      lockButton.removeEventListener("click", handleLockClick);
+    }
+  };
+}
+
+function setupChatModule() {
+  const panel = document.querySelector("[data-chat-panel]");
+  const bubblesEl = document.querySelector("[data-chat-bubbles]");
+  const questionsEl = document.querySelector("[data-chat-questions]");
+  const mergedEl = document.querySelector("[data-chat-merged]");
+  const toggleEl = document.querySelector("[data-chat-toggle]");
+  const clearEl = document.querySelector("[data-chat-clear]");
+  const inputEl = document.querySelector("[data-chat-input]");
+  const sendEl = document.querySelector("[data-chat-send]");
+  const mouthTop = document.querySelector(".mouth-lip--top");
+  const mouthBottom = document.querySelector(".mouth-lip--bottom");
+  if (!panel || !bubblesEl || !questionsEl || !mergedEl || !toggleEl || !clearEl || !inputEl || !sendEl) {
+    return;
+  }
+  const storageKey = "heroChatHistory";
+  let expanded = false;
+  let bubbleScrollTop = 0;
+  let questionsScrollTop = 0;
+  let mergedScrollTop = 0;
+  let mouthResetId = 0;
+  const loadHistory = () => {
+    try {
+      const raw = window.localStorage.getItem(storageKey);
+      if (!raw) {
+        return [];
+      }
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      return [];
+    }
+  };
+  const saveHistory = (nextHistory) => {
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(nextHistory));
+    } catch (error) {
+      void error;
+    }
+  };
+  let history = loadHistory();
+  const updateSendState = () => {
+    const hasText = inputEl.value.trim().length > 0;
+    sendEl.disabled = !hasText;
+  };
+  const render = () => {
+    const shouldStickBubbles = bubblesEl.scrollTop + bubblesEl.clientHeight >= bubblesEl.scrollHeight - 4;
+    const shouldStickQuestions = questionsEl.scrollTop + questionsEl.clientHeight >= questionsEl.scrollHeight - 4;
+    const shouldStickMerged = mergedEl.scrollTop + mergedEl.clientHeight >= mergedEl.scrollHeight - 4;
+    bubblesEl.innerHTML = "";
+    questionsEl.innerHTML = "";
+    mergedEl.innerHTML = "";
+    const bubbleItems = history.map((item, index) => {
+      const bubble = document.createElement("div");
+      const isLatest = index === history.length - 1;
+      bubble.className = "chat-bubble";
+      if (isLatest) {
+        bubble.classList.add("chat-bubble--latest");
+      }
+      bubble.dataset.replyId = item.id;
+      if (!item.botText) {
+        bubble.classList.add("chat-bubble--loading");
+        bubble.innerHTML = `
+          <div class="chat-bubble-content">Thinking...</div>
+          <div class="chat-loader"></div>
+        `;
+      } else {
+        bubble.innerHTML = `<div class="chat-bubble-content">${escapeHtml(item.botText)}</div>`;
+      }
+      return bubble;
+    });
+    bubbleItems.forEach((bubble) => bubblesEl.appendChild(bubble));
+    const questionItems = history.map((item) => {
+      const entry = document.createElement("button");
+      entry.type = "button";
+      entry.className = "chat-question-item";
+      entry.dataset.replyId = item.id;
+      entry.textContent = item.userText;
+      entry.addEventListener("click", () => {
+        const target = bubblesEl.querySelector(`[data-reply-id="${item.id}"]`);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+      return entry;
+    });
+    questionItems.forEach((entry) => questionsEl.appendChild(entry));
+    history.forEach((item) => {
+      const userRow = document.createElement("div");
+      userRow.className = "chat-merged-row chat-merged-row--user";
+      userRow.innerHTML = `<div class="chat-merged-label">You</div><div class="chat-merged-text">${escapeHtml(item.userText)}</div>`;
+      mergedEl.appendChild(userRow);
+      const botRow = document.createElement("div");
+      botRow.className = "chat-merged-row chat-merged-row--bot";
+      if (!item.botText) {
+        botRow.innerHTML = `
+          <div class="chat-merged-label">Bot</div>
+          <div class="chat-merged-text">Thinking...</div>
+          <div class="chat-loader"></div>
+        `;
+      } else {
+        botRow.innerHTML = `<div class="chat-merged-label">Bot</div><div class="chat-merged-text">${escapeHtml(item.botText)}</div>`;
+      }
+      mergedEl.appendChild(botRow);
+    });
+    if (shouldStickBubbles) {
+      bubblesEl.scrollTop = bubblesEl.scrollHeight;
+    }
+    if (shouldStickQuestions) {
+      questionsEl.scrollTop = questionsEl.scrollHeight;
+    }
+    if (shouldStickMerged) {
+      mergedEl.scrollTop = mergedEl.scrollHeight;
+    }
+    updateSendState();
+  };
+  const animateMouth = (text) => {
+    if (!mouthTop || !mouthBottom) {
+      return;
+    }
+    const length = text.replace(/\s+/g, "").length;
+    const cycles = Math.max(2, Math.min(40, Math.ceil(length / 3)));
+    const duration = 120;
+    const openAmount = Math.min(12, 4 + Math.floor(length / 10));
+    const total = cycles * duration;
+    mouthTop.style.animation = "none";
+    mouthBottom.style.animation = "none";
+    mouthTop.style.setProperty("--mouth-open", `${openAmount}px`);
+    mouthBottom.style.setProperty("--mouth-open", `${openAmount}px`);
+    if (mouthResetId) {
+      window.clearTimeout(mouthResetId);
+    }
+    window.requestAnimationFrame(() => {
+      mouthTop.style.animation = `mouth-talk-top ${duration}ms ease-in-out ${cycles}`;
+      mouthBottom.style.animation = `mouth-talk-bottom ${duration}ms ease-in-out ${cycles}`;
+    });
+    mouthResetId = window.setTimeout(() => {
+      mouthTop.style.animation = "none";
+      mouthBottom.style.animation = "none";
+    }, total + 50);
+  };
+  const addMessage = (text) => {
+    const id = `msg-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    history = [...history, { id, userText: text, botText: "" }];
+    saveHistory(history);
+    render();
+    window.setTimeout(() => {
+      const replyText = `已收到：${text}`;
+      history = history.map((item) => item.id === id
+        ? { ...item, botText: replyText }
+        : item);
+      saveHistory(history);
+      render();
+      animateMouth(replyText);
+    }, 800);
+  };
+  const submitInput = () => {
+    const text = inputEl.value.trim();
+    if (!text) {
+      return;
+    }
+    inputEl.value = "";
+    addMessage(text);
+  };
+  const clearHistory = () => {
+    history = [];
+    saveHistory(history);
+    render();
+  };
+  const setExpanded = (nextExpanded) => {
+    if (expanded === nextExpanded) {
+      return;
+    }
+    if (expanded) {
+      mergedScrollTop = mergedEl.scrollTop;
+    } else {
+      bubbleScrollTop = bubblesEl.scrollTop;
+      questionsScrollTop = questionsEl.scrollTop;
+    }
+    expanded = nextExpanded;
+    panel.dataset.expanded = expanded ? "true" : "false";
+    toggleEl.innerHTML = expanded
+      ? `<span class="material-symbols-outlined">unfold_less</span><span>Collapse</span>`
+      : `<span class="material-symbols-outlined">unfold_more</span><span>Expand</span>`;
+    window.requestAnimationFrame(() => {
+      if (expanded) {
+        mergedEl.scrollTop = mergedScrollTop;
+      } else {
+        bubblesEl.scrollTop = bubbleScrollTop;
+        questionsEl.scrollTop = questionsScrollTop;
+      }
+    });
+  };
+  toggleEl.addEventListener("click", () => setExpanded(!expanded));
+  clearEl.addEventListener("click", clearHistory);
+  sendEl.addEventListener("click", submitInput);
+  inputEl.addEventListener("input", updateSendState);
+  inputEl.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      submitInput();
+    }
+  });
+  render();
+  setExpanded(false);
 }
 
 function renderSubpage(subpageConfig, articles, viewKey) {
@@ -490,11 +857,17 @@ async function renderArticlePage(siteConfig, articles) {
     throw new Error("Failed to load article content");
   }
   const markdown = await markdownResponse.text();
-  const primaryCategory = Array.isArray(article.category) && article.category.length > 0 ? article.category[0] : "Article";
+  const categories = Array.isArray(article.category) && article.category.length > 0 ? article.category : ["Article"];
+  const categoryBadges = categories
+    .map((category) => `<div class="inline-block bg-primary px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm border border-charcoal">${category}</div>`)
+    .join("");
   document.title = `${siteConfig.brand} | ${article.title}`;
   root.innerHTML = `
     <article class="max-w-4xl">
-      <div class="inline-block bg-primary px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm border border-charcoal mb-4">${primaryCategory}</div>
+      <button type="button" class="inline-flex items-center gap-2 border-4 border-charcoal bg-white text-charcoal px-4 py-2 font-black uppercase tracking-wider rounded-sm hover:bg-cream transition-colors mb-6" onclick="history.back()">
+        <span class="material-symbols-outlined text-base">arrow_back</span>Back
+      </button>
+      <div class="flex flex-wrap gap-2 mb-4">${categoryBadges}</div>
       <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4">${article.title}</h1>
       <p class="text-sm font-bold uppercase tracking-wide text-charcoal/70 mb-8">${formatDate(article.date)}</p>
       <div class="markdown text-charcoal">${markdownToHtml(markdown)}</div>
@@ -530,6 +903,8 @@ async function init() {
   if (pageType === "home") {
     const connectProfile = await loadJson("./data/connect-profile.json", "Failed to load connect profile");
     renderHome(siteConfig, articles, connectProfile);
+    setupHeroEye();
+    setupChatModule();
     return;
   }
   if (pageType === "subpage") {
