@@ -430,29 +430,48 @@ body.page-leaving {
   padding-right: 4px;
 }
 
-.chat-merged-row {
-  border: 2px solid #2d2a1e;
-  padding: 8px 10px;
-  background: #ffffff;
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 10px;
-  font-size: 12px;
+.chat-merged-bubble {
+  margin: 0;
+  width: 100%;
 }
 
-.chat-merged-row--bot {
-  background: #2d2a1e;
-  color: #f4f2e6;
-}
-
-.chat-merged-label {
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-.chat-merged-text {
+.chat-markdown {
   word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.chat-markdown p {
+  margin: 0;
+}
+
+.chat-markdown p + p {
+  margin-top: 0.45rem;
+}
+
+.chat-markdown ul {
+  margin: 0.45rem 0 0 1rem;
+  list-style: square;
+}
+
+.chat-markdown li {
+  margin: 0.15rem 0;
+}
+
+.chat-markdown blockquote {
+  border-left: 2px solid currentColor;
+  margin: 0.45rem 0;
+  padding-left: 0.5rem;
+}
+
+.chat-markdown pre {
+  margin: 0.45rem 0;
+  padding: 0.5rem;
+  border: 2px solid currentColor;
+  overflow-x: auto;
+}
+
+.chat-markdown code {
+  font-size: 11px;
 }
 
 .chat-panel[data-expanded="true"] .chat-split {
