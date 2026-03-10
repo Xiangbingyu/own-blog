@@ -1,7 +1,7 @@
 [
   {
     "id": "media-rank-steins-gate",
-    "title": "TOP 1《命运石之门》：时间闭环与选择代价",
+    "title": "《命运石之门》：时间闭环与选择代价",
     "summary": "最强的是叙事闭环与情绪回收，兼具设定严谨和角色成长。",
     "date": "2026-03-09",
     "category": ["media", "mediaRank"],
@@ -14,7 +14,7 @@
   },
   {
     "id": "media-rank-fullmetal-alchemist",
-    "title": "TOP 2《钢之炼金术士》：群像与主题的平衡",
+    "title": "《钢之炼金术士》：群像与主题的平衡",
     "summary": "在热血叙事中保持思想深度，群像塑造和节奏都非常稳定。",
     "date": "2026-03-08",
     "category": ["media", "mediaRank"],
@@ -27,7 +27,7 @@
   },
   {
     "id": "media-rank-made-in-abyss",
-    "title": "TOP 3《来自深渊》：童话外表下的残酷探索",
+    "title": "《来自深渊》：童话外表下的残酷探索",
     "summary": "世界构建出色，情绪反差极强，音乐与氛围表现顶级。",
     "date": "2026-03-07",
     "category": ["media", "mediaRank"],
@@ -40,7 +40,7 @@
   },
   {
     "id": "media-rank-attack-on-titan",
-    "title": "TOP 4《进击的巨人》：从生存恐惧到时代寓言",
+    "title": "《进击的巨人》：从生存恐惧到时代寓言",
     "summary": "叙事野心与讨论深度兼备，立场冲突与主题表达都很有力量。",
     "date": "2026-03-06",
     "category": ["media", "mediaRank"],
@@ -52,6 +52,123 @@
     "contentPath": "./content/media-rank-attack-on-titan.md"
   },
   {
+    "id": "media-rank-death-note",
+    "title": "《死亡笔记》：正义与人性的博弈",
+    "summary": "夜神月与 L 的高智商对决，探讨绝对正义与人性的堕落。",
+    "date": "2026-03-05",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 5,
+    "mediaType": "Anime",
+    "rank": 5,
+    "tags": ["Ranking", "Anime", "Mystery"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-death-note.md"
+  },
+  {
+    "id": "media-rank-idaten-deities",
+    "title": "《平稳世代的韦驮天们》：反套路的战争神话",
+    "summary": "画风独特，剧情硬核，在魔族复活的时代探讨生存与伦理。",
+    "date": "2026-03-05",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 6,
+    "mediaType": "Anime",
+    "rank": 6,
+    "tags": ["Ranking", "Anime", "Fantasy"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-idaten-deities.md"
+  },
+  {
+    "id": "media-rank-mob-psycho-100",
+    "title": "《灵能 100》：平凡少年的温柔成长",
+    "summary": "骨头社顶级作画，讲述拥有最强超能力的少年如何寻找自我。",
+    "date": "2026-03-04",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 7,
+    "mediaType": "Anime",
+    "rank": 7,
+    "tags": ["Ranking", "Anime", "Supernatural"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-mob-psycho-100.md"
+  },
+  {
+    "id": "media-rank-one-punch-man",
+    "title": "《一拳超人》：兴趣使然的英雄",
+    "summary": "反套路英雄主义，极致的爽感与幽默的日常完美融合。",
+    "date": "2026-03-04",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 8,
+    "mediaType": "Anime",
+    "rank": 8,
+    "tags": ["Ranking", "Anime", "Action"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-one-punch-man.md"
+  },
+  {
+    "id": "media-rank-86-eighty-six",
+    "title": "《86 不存在的战区》：机甲与少年的悲歌",
+    "summary": "在无人知晓的战场上，少年少女们驾驶着名为棺材的机甲战斗。",
+    "date": "2026-03-03",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 9,
+    "mediaType": "Anime",
+    "rank": 9,
+    "tags": ["Ranking", "Anime", "Mecha"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-86-eighty-six.md"
+  },
+  {
+    "id": "media-rank-cyberpunk-edgerunners",
+    "title": "《赛博朋克：边缘行者》：夜之城的终极浪漫",
+    "summary": "扳机社献上的视觉盛宴，关于大卫在夜之城燃烧殆尽的故事。",
+    "date": "2026-03-03",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 10,
+    "mediaType": "Anime",
+    "rank": 10,
+    "tags": ["Ranking", "Anime", "Cyberpunk"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-cyberpunk-edgerunners.md"
+  },
+  {
+    "id": "media-rank-kill-la-kill",
+    "title": "《斩服少女》：热血与衣着的狂想曲",
+    "summary": "今石洋之的超高速演出，用剪刀斩断命运的束缚。",
+    "date": "2026-03-02",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 11,
+    "mediaType": "Anime",
+    "rank": 11,
+    "tags": ["Ranking", "Anime", "Action"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-kill-la-kill.md"
+  },
+  {
+    "id": "media-rank-akame-ga-kill",
+    "title": "《斩赤红之瞳》：黑暗中的革命之路",
+    "summary": "为了正义必须有人牺牲，一部发便当毫不手软的黑暗奇幻物语。",
+    "date": "2026-03-02",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 12,
+    "mediaType": "Anime",
+    "rank": 12,
+    "tags": ["Ranking", "Anime", "Dark Fantasy"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-akame-ga-kill.md"
+  },
+  {
+    "id": "media-rank-guilty-crown",
+    "title": "《罪恶王冠》：怀抱荆棘的王之力量",
+    "summary": "泽野弘之神级配乐加持，集与楪祈的末世羁绊。",
+    "date": "2026-03-01",
+    "category": ["media", "mediaRank"],
+    "featuredOrder": 13,
+    "mediaType": "Anime",
+    "rank": 13,
+    "tags": ["Ranking", "Anime", "Sci-Fi"],
+    "specialMark": true,
+    "contentPath": "./content/media-rank-guilty-crown.md"
+  },
+  {
     "id": "project-nvidia-v100-driver-automator",
     "title": "NVIDIA V100 Driver Automator：驱动自动化管理套件",
     "summary": "面向 Tesla V100 的驱动管理自动化方案，强调可脚本化与可复用部署流程。",
@@ -60,6 +177,156 @@
     "featuredOrder": 1,
     "tags": ["GPU", "Automation", "Infra"],
     "contentPath": "./content/project-nvidia-v100-driver-automator.md"
+  },
+  {
+    "id": "log-v100-driver",
+    "title": "NVIDIA V100 驱动安装与 Bug 踩坑记录",
+    "summary": "记录 V100 显卡在 Linux 环境下驱动安装的常见问题，包括内核版本冲突与持久化失效的解决方案。",
+    "date": "2026-03-09",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 1,
+    "tags": ["Linux", "GPU", "Driver", "Troubleshooting"],
+    "contentPath": "./content/log-v100-driver.md"
+  },
+  {
+    "id": "log-yisu-hotel-tech",
+    "title": "易宿酒店开发实录：JWT、高德地图与阿里云短信",
+    "summary": "分享 Yisu-Hotel 项目中的关键技术实现，涵盖身份认证、LBS 服务接入与短信验证模块。",
+    "date": "2026-03-08",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 2,
+    "tags": ["Java", "JWT", "Map API", "Aliyun"],
+    "contentPath": "./content/log-yisu-hotel-tech.md"
+  },
+  {
+    "id": "log-unity-webgl",
+    "title": "将 Unity 数字人接入 Web：React 与 WebGL 的融合",
+    "summary": "探索 AIassistant_React 项目中 Unity WebGL 的导出优化及其与 React 前端的双向通信机制。",
+    "date": "2026-03-07",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 3,
+    "tags": ["Unity", "WebGL", "React", "Frontend"],
+    "contentPath": "./content/log-unity-webgl.md"
+  },
+  {
+    "id": "log-chat-room-idea",
+    "title": "从 AI 辅助创作到自动对话：双框架聊天室构想",
+    "summary": "基于 ai-fantasy-assistant 后的新灵感，构思使用 Spring Boot + Django 实现多 AI 角色自动对话系统。",
+    "date": "2026-03-06",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 4,
+    "tags": ["Architecture", "Spring Boot", "Django", "AI Agent"],
+    "contentPath": "./content/log-chat-room-idea.md"
+  },
+  {
+    "id": "log-ai-town-arch",
+    "title": "AI 小镇的两种架构演进与 AIvilization 的启示",
+    "summary": "对比中心化上帝视角与分布式感知两种架构，探讨为何选择参考 AIvilization 实现去中心化的 AI 小镇。",
+    "date": "2026-03-05",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 5,
+    "tags": ["AI", "Simulation", "Architecture", "Game Dev"],
+    "contentPath": "./content/log-ai-town-arch.md"
+  },
+  {
+    "id": "log-ai-coding-stitch",
+    "title": "AI 编程新范式：利用 Google Stitch 快速构建前端原型",
+    "summary": "尝试使用 Google Stitch 生成视觉原型，结合 AI 编程助手快速落地前端代码的高效工作流。",
+    "date": "2026-03-04",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 6,
+    "tags": ["AI Coding", "Frontend", "Tooling", "Workflow"],
+    "contentPath": "./content/log-ai-coding-stitch.md"
+  },
+  {
+    "id": "career-lab-and-awards",
+    "title": "校园实验室与竞赛征途：技术成长的加速器",
+    "summary": "记录从 Global Game Jam 到 Soul App Agent 创新赛的竞赛历程，以及在 AI 思政实验室的实战经验。",
+    "date": "2026-03-09",
+    "category": ["career", "careerExperience"],
+    "featuredOrder": 1,
+    "tags": ["Competition", "Lab", "Awards", "Growth"],
+    "contentPath": "./content/career-lab-and-awards.md"
+  },
+  {
+    "id": "career-rag-research",
+    "title": "RAG 技术深度探索：从基础索引到 GraphRAG",
+    "summary": "深入研究 16 种 RAG 优化策略，并重点解析 GraphRAG 在复杂问答中的应用与优势。",
+    "date": "2026-03-08",
+    "category": ["career", "careerExperience"],
+    "featuredOrder": 2,
+    "tags": ["RAG", "GraphRAG", "AI Research", "LLM"],
+    "contentPath": "./content/career-rag-research.md"
+  },
+  {
+    "id": "career-rokid-dev",
+    "title": "Rokid AR 眼镜开发实录：Android 原生与多模态交互",
+    "summary": "分享在 Rokid 智能眼镜开发中攻克的双端通信难题，以及“随心一听”功能的创意实现。",
+    "date": "2026-03-07",
+    "category": ["career", "careerExperience"],
+    "featuredOrder": 3,
+    "tags": ["AR", "Rokid", "Android", "Kotlin"],
+    "contentPath": "./content/career-rokid-dev.md"
+  },
+  {
+    "id": "career-backend-ai-growth",
+    "title": "后端与 AI 融合之路：从 Java 生态到 Agent 架构",
+    "summary": "回顾从 Java/Spring Boot 后端工程化到拥抱 Python/LangChain/CrewAI 的技术转型之路。",
+    "date": "2026-03-06",
+    "category": ["career", "careerExperience"],
+    "featuredOrder": 4,
+    "tags": ["Java", "Spring Boot", "Python", "AI Agent"],
+    "contentPath": "./content/career-backend-ai-growth.md"
+  },
+  {
+    "id": "life-ggj-2026",
+    "title": "2026 全球游戏制作节 (GGJ) 体验记",
+    "summary": "记录在 48 小时极限挑战中，与团队协作完成游戏原型的激情周末。",
+    "date": "2026-03-09",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 1,
+    "tags": ["Game Jam", "Unity", "Teamwork"],
+    "contentPath": "./content/life-ggj-2026.md"
+  },
+  {
+    "id": "life-ctrip-bootcamp",
+    "title": "携程前端训练营：补全全栈拼图",
+    "summary": "为了弥补前端短板，系统学习现代前端开发体系的成长记录。",
+    "date": "2026-03-08",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 2,
+    "tags": ["Frontend", "React", "Growth"],
+    "contentPath": "./content/life-ctrip-bootcamp.md"
+  },
+  {
+    "id": "life-interviews",
+    "title": "寒假两次面试经历复盘",
+    "summary": "特工宇宙与学姐公司的面试体验，从初创极客到工程落地的思考。",
+    "date": "2026-03-07",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 3,
+    "tags": ["Interview", "Career", "Reflection"],
+    "contentPath": "./content/life-interviews.md"
+  },
+  {
+    "id": "life-university-contests",
+    "title": "大三上学期：SoulAPP Agent 大赛与易班创新赛",
+    "summary": "回顾 SoulAPP Agent 创新赛百强入围与易班技术创新赛获奖的高光时刻。",
+    "date": "2026-03-06",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 4,
+    "tags": ["Competition", "Agent", "Awards"],
+    "contentPath": "./content/life-university-contests.md"
+  },
+  {
+    "id": "life-aliyun-agent",
+    "title": "阿里云 Agent 比赛：DeepResearch 架构探索",
+    "summary": "深入研究 DeepResearch 架构，掌握 IQS 搜索引擎与自主智能体开发。",
+    "date": "2026-03-05",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 5,
+    "tags": ["Aliyun", "DeepResearch", "AI Agent"],
+    "contentPath": "./content/life-aliyun-agent.md"
   },
   {
     "id": "project-ai-fantasy-assistant",
@@ -90,5 +357,45 @@
     "featuredOrder": 4,
     "tags": ["Blog", "Static", "HTML"],
     "contentPath": "./content/project-own-blog.md"
+  },
+  {
+    "id": "project-ai-town",
+    "title": "AI Town：多智能体虚拟小镇",
+    "summary": "基于 Unity 和 Python 构建的 AI 驱动虚拟城镇，每个 NPC 具备独立人格、记忆与自主决策能力。",
+    "date": "2026-03-10",
+    "category": ["projects", "futureLab"],
+    "featuredOrder": 5,
+    "tags": ["AI", "Unity", "Simulation"],
+    "contentPath": "./content/project-ai-town.md"
+  },
+  {
+    "id": "project-3d-ai-counselor",
+    "title": "3D AI Counselor：沉浸式心理辅导数字人",
+    "summary": "结合 React 前端与 Unity 3D 渲染的 AI 心理辅导员，提供具身化的交互体验。",
+    "date": "2026-03-10",
+    "category": ["projects", "futureLab"],
+    "featuredOrder": 6,
+    "tags": ["AI", "React", "Unity", "Healthcare"],
+    "contentPath": "./content/project-3d-ai-counselor.md"
+  },
+  {
+    "id": "project-yisu-hotel",
+    "title": "易宿酒店：分布式酒店预订平台",
+    "summary": "采用微服务架构的酒店预订系统，涵盖用户预订、商家管理与后台运营功能。",
+    "date": "2026-03-10",
+    "category": ["projects", "futureLab"],
+    "featuredOrder": 7,
+    "tags": ["Web", "Microservices", "Platform"],
+    "contentPath": "./content/project-yisu-hotel.md"
+  },
+  {
+    "id": "project-rokid-mobile",
+    "title": "Rokid Mobile System：慧视校园 AR 伴侣",
+    "summary": "基于 Rokid AR 眼镜的移动端配套系统，拓展校园场景下的增强现实应用。",
+    "date": "2026-03-10",
+    "category": ["projects", "futureLab"],
+    "featuredOrder": 8,
+    "tags": ["AR", "Mobile", "Rokid", "Android"],
+    "contentPath": "./content/project-rokid-mobile.md"
   }
 ]
