@@ -1,5 +1,24 @@
 import { setupChatModule } from "./chat-module.js";
 
+const nightModeStorageKey = "siteNightMode";
+
+function setNightMode(enabled) {
+  document.documentElement.classList.toggle("theme-night", enabled);
+  try {
+    window.localStorage.setItem(nightModeStorageKey, enabled ? "true" : "false");
+  } catch (error) {
+    void error;
+  }
+}
+
+function loadNightMode() {
+  try {
+    return window.localStorage.getItem(nightModeStorageKey) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
 function formatDate(dateInput) {
   const date = new Date(dateInput);
   if (Number.isNaN(date.getTime())) {
@@ -265,14 +284,14 @@ function renderShell(siteConfig, activeViewKey) {
   header.innerHTML = `
     <header class="flex items-center justify-between border-b-4 border-charcoal bg-primary px-6 md:px-20 py-4">
       <div class="flex items-center gap-3">
-        <div class="bg-charcoal p-1 rounded-sm">
+        <div class="bg-charcoal p-1 rounded-sm header-brand-badge">
           <span class="material-symbols-outlined text-primary text-2xl">terminal</span>
         </div>
         <a class="text-charcoal text-2xl font-black tracking-tight uppercase hover:underline decoration-4 ${homeActiveClass}" href="./index.html">${siteConfig.brand}</a>
       </div>
       <div class="flex items-center gap-6">
         <nav class="hidden lg:flex items-center gap-6">${navHtml}</nav>
-        <a class="bg-charcoal text-primary px-4 py-2 font-bold text-xs uppercase rounded-sm hover:bg-opacity-90 flex items-center gap-2" href="./connect.html">
+        <a class="bg-charcoal text-primary px-4 py-2 font-bold text-xs uppercase rounded-sm hover:bg-opacity-90 flex items-center gap-2 header-connect-link" href="./connect.html">
           <span class="material-symbols-outlined text-sm">sensors</span>
           ${connectLabel}
         </a>
@@ -308,7 +327,7 @@ function renderShell(siteConfig, activeViewKey) {
 
 function buildContactCard(item, titleTag, bodyClass) {
   const isClickable = item && item.clickable !== false && item.href;
-  const cardClass = `border-4 border-charcoal p-6 ${isClickable ? "bg-white hover:bg-primary transition-colors cursor-pointer" : "bg-cream"} block`;
+  const cardClass = `contact-card border-4 border-charcoal p-6 ${isClickable ? "contact-card--link bg-white hover:bg-primary transition-colors cursor-pointer" : "contact-card--static bg-cream"} block`;
   const titleHtml = `<${titleTag} class="text-xl font-black uppercase mb-2">${item.label}</${titleTag}>`;
   const bodyHtml = `<p class="${bodyClass}">${item.value}</p>`;
   if (isClickable) {
@@ -385,7 +404,8 @@ function renderHome(siteConfig, articles, connectProfile) {
         <div class="grid w-full max-w-5xl grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-4">
           <div class="flex w-full max-w-md flex-col gap-4">
           <div class="relative w-full aspect-square bg-cream border-4 border-charcoal p-4 pixel-shadow" data-eye-panel>
-            <div class="eye-antenna" aria-hidden="true">
+            <div class="eye-antenna" data-eye-antenna role="button" tabindex="0" aria-label="Toggle night mode by pulling antenna">
+              <div class="eye-antenna-tooltip">Click me!</div>
               <div class="eye-antenna-head"></div>
               <div class="eye-antenna-stem"></div>
               <div class="eye-antenna-base"></div>
@@ -448,6 +468,7 @@ function setupHeroEye() {
   const socket = document.querySelector("[data-eye-socket]");
   const iris = document.querySelector("[data-eye-iris]");
   const lockButton = document.querySelector("[data-eye-lock]");
+  const antenna = panel ? panel.querySelector("[data-eye-antenna]") : null;
   if (!panel || !socket || !iris) {
     return;
   }
@@ -458,6 +479,9 @@ function setupHeroEye() {
   let currentY = 0;
   let frameId = 0;
   let locked = false;
+  let antennaPulling = false;
+  let antennaPullTimer = 0;
+  let antennaThemeTimer = 0;
   const setLocked = (nextLocked) => {
     locked = nextLocked;
     if (lockButton) {
@@ -527,6 +551,53 @@ function setupHeroEye() {
   const handleLockClick = () => {
     setLocked(!locked);
   };
+  const clearAntennaTimers = () => {
+    if (antennaPullTimer) {
+      window.clearTimeout(antennaPullTimer);
+      antennaPullTimer = 0;
+    }
+    if (antennaThemeTimer) {
+      window.clearTimeout(antennaThemeTimer);
+      antennaThemeTimer = 0;
+    }
+  };
+  const resetAntennaState = () => {
+    if (antenna) {
+      antenna.classList.remove("eye-antenna--pulling");
+    }
+    antennaPulling = false;
+  };
+  const playAntennaPull = () => {
+    if (!antenna || antennaPulling) {
+      return false;
+    }
+    antennaPulling = true;
+    antenna.classList.remove("eye-antenna--pulling");
+    void antenna.offsetWidth;
+    antenna.classList.add("eye-antenna--pulling");
+    antennaPullTimer = window.setTimeout(() => {
+      resetAntennaState();
+      antennaPullTimer = 0;
+    }, 460);
+    return true;
+  };
+  const triggerAntennaThemeSwitch = () => {
+    const played = playAntennaPull();
+    if (!played) {
+      return;
+    }
+    antennaThemeTimer = window.setTimeout(() => {
+      const nextNightMode = !document.documentElement.classList.contains("theme-night");
+      setNightMode(nextNightMode);
+      antennaThemeTimer = 0;
+    }, 300);
+  };
+  const handleAntennaKeydown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      triggerAntennaThemeSwitch();
+    }
+  };
   const animate = () => {
     currentX += (targetX - currentX) * 0.15;
     currentY += (targetY - currentY) * 0.15;
@@ -541,6 +612,10 @@ function setupHeroEye() {
     lockButton.addEventListener("click", handleLockClick);
     setLocked(loadLockedState());
   }
+  if (antenna) {
+    antenna.addEventListener("click", triggerAntennaThemeSwitch);
+    antenna.addEventListener("keydown", handleAntennaKeydown);
+  }
   frameId = window.requestAnimationFrame(animate);
   return () => {
     if (frameId) {
@@ -552,6 +627,12 @@ function setupHeroEye() {
     if (lockButton) {
       lockButton.removeEventListener("click", handleLockClick);
     }
+    if (antenna) {
+      antenna.removeEventListener("click", triggerAntennaThemeSwitch);
+      antenna.removeEventListener("keydown", handleAntennaKeydown);
+    }
+    clearAntennaTimers();
+    resetAntennaState();
   };
 }
 
@@ -683,6 +764,7 @@ async function loadJson(path, errorMessage) {
 }
 
 async function init() {
+  setNightMode(loadNightMode());
   setupPageTransition();
   const pageType = document.body.dataset.page || "home";
   const params = new URLSearchParams(window.location.search);
