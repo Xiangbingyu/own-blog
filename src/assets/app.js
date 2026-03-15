@@ -769,20 +769,39 @@ async function init() {
   const pageType = document.body.dataset.page || "home";
   const params = new URLSearchParams(window.location.search);
   const viewKey = params.get("view");
-  const siteConfig = await loadJson("./data/site-config.json", "Failed to load site config");
-  const subpageConfig = await loadJson("./data/subpage-config.json", "Failed to load subpage config");
+
+  const siteConfigPromise = loadJson("./data/site-config.json", "Failed to load site config");
+  const subpageConfigPromise = loadJson("./data/subpage-config.json", "Failed to load subpage config");
+
+  let connectProfilePromise;
+  let articlesPromise;
+
+  if (pageType === "connect") {
+    connectProfilePromise = loadJson("./data/connect-profile.json", "Failed to load connect profile");
+  } else if (pageType === "home") {
+    connectProfilePromise = loadJson("./data/connect-profile.json", "Failed to load connect profile");
+    articlesPromise = loadJson("./data/articles.json", "Failed to load article data");
+  } else {
+    articlesPromise = loadJson("./data/articles.json", "Failed to load article data");
+  }
+
+  const [siteConfig, subpageConfig] = await Promise.all([siteConfigPromise, subpageConfigPromise]);
+
   const activeViewKey = pageType === "subpage" ? viewKey : "";
   document.title = resolveTitle(siteConfig, subpageConfig, pageType, viewKey);
   renderShell(siteConfig, activeViewKey);
+
   if (pageType === "connect") {
-    const connectProfile = await loadJson("./data/connect-profile.json", "Failed to load connect profile");
+    const connectProfile = await connectProfilePromise;
     document.title = connectProfile.pageTitle || siteConfig.home.pageTitle;
     renderConnect(connectProfile);
     return;
   }
-  const articles = await loadJson("./data/articles.json", "Failed to load article data");
+
+  const articles = await articlesPromise;
+
   if (pageType === "home") {
-    const connectProfile = await loadJson("./data/connect-profile.json", "Failed to load connect profile");
+    const connectProfile = await connectProfilePromise;
     renderHome(siteConfig, articles, connectProfile);
     setupHeroEye();
     setupChatModule({ siteConfig });
