@@ -239,6 +239,36 @@
     "contentPath": "./content/log-ai-coding-stitch.md"
   },
   {
+    "id": "log-soul-automation",
+    "title": "自动化脚本实践：Soul APP 比赛中的数据增长探索",
+    "summary": "记录在 Soul APP Agent 创新赛期间，如何通过 Python 脚本与代理池模拟高并发互动。",
+    "date": "2026-03-09",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 1,
+    "tags": ["Automation", "Python", "Data Growth"],
+    "contentPath": "./content/log-soul-automation.md"
+  },
+  {
+    "id": "log-docker-milvus",
+    "title": "Docker 部署与 Milvus 向量检索实战",
+    "summary": "记录使用 Docker 容器化部署后端服务，并利用 Milvus 向量库实现高性能人脸模糊匹配的过程。",
+    "date": "2026-03-09",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 2,
+    "tags": ["Docker", "Milvus", "Vector DB", "Face Search"],
+    "contentPath": "./content/log-docker-milvus.md"
+  },
+  {
+    "id": "project-term-agent",
+    "title": "Term-Agent：终端智能助手与 PyPI 发布实录",
+    "summary": "将自然语言转化为 Shell 命令的智能工具，并记录了将其打包发布到 PyPI 的完整流程。",
+    "date": "2026-03-09",
+    "category": ["projects", "futureLab"],
+    "featuredOrder": 1,
+    "tags": ["CLI", "Python", "PyPI", "Open Source"],
+    "contentPath": "./content/project-term-agent.md"
+  },
+  {
     "id": "career-lab-and-awards",
     "title": "校园实验室与竞赛征途：技术成长的加速器",
     "summary": "记录从 Global Game Jam 到 Soul App Agent 创新赛的竞赛历程，以及在 AI 思政实验室的实战经验。",
