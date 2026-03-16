@@ -359,6 +359,16 @@
     "contentPath": "./content/life-aliyun-agent.md"
   },
   {
+    "id": "life-russia-study-tour",
+    "title": "大二暑假俄罗斯访学：从冬宫夏宫到四足机器人站立",
+    "summary": "记录俄罗斯访学期间的人文参访与技术成长：在游览冬宫夏宫和剧院之外，系统学习强化学习并完成四足机器人站立训练。",
+    "date": "2026-03-16",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 6,
+    "tags": ["Russia", "Study Tour", "Reinforcement Learning", "Robotics"],
+    "contentPath": "./content/life-russia-study-tour.md"
+  },
+  {
     "id": "project-ai-fantasy-assistant",
     "title": "AI Fantasy Assistant：AI 小说协创平台",
     "summary": "面向小说共创的 AI 协作平台，聚焦世界观、角色与章节的结构化共写。",
