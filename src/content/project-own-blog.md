@@ -1,4 +1,4 @@
-# Own Blog
+# XiangBy
 
 HTML + JSON + Markdown 组成的静态博客方案，不依赖后端，通过元数据与正文分离的方式维护内容。
 

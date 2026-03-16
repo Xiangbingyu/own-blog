@@ -380,7 +380,7 @@
   },
   {
     "id": "project-own-blog",
-    "title": "Own Blog：HTML + JSON + Markdown 的静态博客",
+    "title": "XiangBy：HTML + JSON + Markdown 的静态博客",
     "summary": "以 JSON 元数据驱动内容展示，配合 Markdown 编写文章的静态博客方案。",
     "date": "2026-03-09",
     "category": ["projects", "futureLab"],

@@ -1,7 +1,7 @@
 {
   "views": {
     "projects": {
-      "pageTitle": "DreamGong | PROJECT",
+      "pageTitle": "XiangBy | PROJECT",
       "heading": "PROJECT",
       "description": "Projects column: all articles sorted by date.",
       "category": "projects",
@@ -9,7 +9,7 @@
       "display": "grid-3"
     },
     "media": {
-      "pageTitle": "DreamGong | MEDIA",
+      "pageTitle": "XiangBy | MEDIA",
       "heading": "MEDIA",
       "description": "Media column: all articles sorted by date.",
       "category": "media",
@@ -17,7 +17,7 @@
       "display": "grid-3"
     },
     "logs": {
-      "pageTitle": "DreamGong | LOGS",
+      "pageTitle": "XiangBy | LOGS",
       "heading": "LOGS",
       "description": "Logs column: all articles sorted by date.",
       "category": "logs",
@@ -25,7 +25,7 @@
       "display": "grid-3"
     },
     "career": {
-      "pageTitle": "DreamGong | CAREER",
+      "pageTitle": "XiangBy | CAREER",
       "heading": "CAREER",
       "description": "Career column: all articles sorted by date.",
       "category": "career",
@@ -33,7 +33,7 @@
       "display": "grid-3"
     },
     "life": {
-      "pageTitle": "DreamGong | LIFE",
+      "pageTitle": "XiangBy | LIFE",
       "heading": "LIFE",
       "description": "Life column: all articles sorted by date.",
       "category": "life",
@@ -41,7 +41,7 @@
       "display": "grid-3"
     },
     "futureLab": {
-      "pageTitle": "DreamGong | FUTURE LAB",
+      "pageTitle": "XiangBy | FUTURE LAB",
       "heading": "FUTURE LAB",
       "description": "Featured home section page: sorted by featured order.",
       "category": "futureLab",
@@ -49,7 +49,7 @@
       "display": "grid-3"
     },
     "mediaRank": {
-      "pageTitle": "DreamGong | MEDIA RANK",
+      "pageTitle": "XiangBy | MEDIA RANK",
       "heading": "MEDIA RANK",
       "description": "Featured home section page: ranked by personal preference.",
       "category": "mediaRank",
@@ -57,7 +57,7 @@
       "display": "rank"
     },
     "ideaLogs": {
-      "pageTitle": "DreamGong | IDEA LOGS Featured",
+      "pageTitle": "XiangBy | IDEA LOGS Featured",
       "heading": "IDEA LOGS",
       "description": "Featured home section page: sorted by featured order.",
       "category": "ideaLogs",
@@ -65,7 +65,7 @@
       "display": "grid-2"
     },
     "careerExperience": {
-      "pageTitle": "DreamGong | Career Experience Featured",
+      "pageTitle": "XiangBy | Career Experience Featured",
       "heading": "Career Experience",
       "description": "Featured home section page: sorted by featured order.",
       "category": "careerExperience",
@@ -73,7 +73,7 @@
       "display": "grid-2"
     },
     "lifeStream": {
-      "pageTitle": "DreamGong | Life Stream Featured",
+      "pageTitle": "XiangBy | Life Stream Featured",
       "heading": "Life Stream",
       "description": "Featured home section page: sorted by featured order.",
       "category": "lifeStream",
