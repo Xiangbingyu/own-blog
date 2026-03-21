@@ -269,6 +269,16 @@
     "contentPath": "./content/project-term-agent.md"
   },
   {
+    "id": "career-chaoreai-week1",
+    "title": "超热爱第一周：Spring Boot 与团队协作初体验",
+    "summary": "入职超热爱项目开发组第一周，熟悉 Spring Boot 框架、Spring Security + JWT 认证，以及团队编码规范。",
+    "date": "2026-03-21",
+    "category": ["career", "careerExperience"],
+    "featuredOrder": 0,
+    "tags": ["Spring Boot", "JWT", "Teamwork", "Internship"],
+    "contentPath": "./content/career-chaoreai-week1.md"
+  },
+  {
     "id": "career-lab-and-awards",
     "title": "校园实验室与竞赛征途：技术成长的加速器",
     "summary": "记录从 Global Game Jam 到 Soul App Agent 创新赛的竞赛历程，以及在 AI 思政实验室的实战经验。",
