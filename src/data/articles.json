@@ -369,6 +369,26 @@
     "contentPath": "./content/life-aliyun-agent.md"
   },
   {
+    "id": "life-russia-study-tour",
+    "title": "大二暑假俄罗斯访学：从冬宫夏宫到四足机器人站立",
+    "summary": "记录俄罗斯访学期间的人文参访与技术成长：在游览冬宫夏宫和剧院之外，系统学习强化学习并完成四足机器人站立训练。",
+    "date": "2026-03-16",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 6,
+    "tags": ["Russia", "Study Tour", "Reinforcement Learning", "Robotics"],
+    "contentPath": "./content/life-russia-study-tour.md"
+  },
+  {
+    "id": "life-v100-rebuild-and-impact",
+    "title": "大二下折腾 V100：从硬件改造到技术内容破圈",
+    "summary": "记录购买 V100 显卡核心与主板并改造个人电脑的完整过程，沉淀驱动排障经验并通过内容分享获得社区正反馈。",
+    "date": "2026-03-16",
+    "category": ["life", "lifeStream"],
+    "featuredOrder": 7,
+    "tags": ["V100", "Hardware", "Driver", "Content"],
+    "contentPath": "./content/life-v100-rebuild-and-impact.md"
+  },
+  {
     "id": "project-ai-fantasy-assistant",
     "title": "AI Fantasy Assistant：AI 小说协创平台",
     "summary": "面向小说共创的 AI 协作平台，聚焦世界观、角色与章节的结构化共写。",
@@ -390,7 +410,7 @@
   },
   {
     "id": "project-own-blog",
-    "title": "Own Blog：HTML + JSON + Markdown 的静态博客",
+    "title": "XiangBy：HTML + JSON + Markdown 的静态博客",
     "summary": "以 JSON 元数据驱动内容展示，配合 Markdown 编写文章的静态博客方案。",
     "date": "2026-03-09",
     "category": ["projects", "futureLab"],

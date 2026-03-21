@@ -1,6 +1,6 @@
 {
-  "brand": "DREAMGONG",
-  "articlePageTitle": "DreamGong | Article",
+  "brand": "XiangBy",
+  "articlePageTitle": "XiangBy | Article",
   "navigation": [
     { "key": "projects", "label": "Projects", "viewKey": "projects", "showInNav": true },
     { "key": "media", "label": "Media", "viewKey": "media", "showInNav": true },
@@ -10,13 +10,13 @@
     { "key": "connect", "label": "Connect", "viewKey": "connect", "showInNav": false }
   ],
   "home": {
-    "pageTitle": "DreamGong | Home",
+    "pageTitle": "XiangBy | Home",
     "hero": {
       "status": "System Status: Operational",
       "title": "Building the <span class=\"bg-primary px-2\">Neural</span> Frontier",
       "subtitle": "Using a retro pixel style to present projects, rankings, logs, and life records.",
       "badge": "LIVE_FEED: ON",
-      "panelText": "DREAMGONG",
+      "panelText": "XIANGBY",
       "actions": [
         { "label": "Enter Projects", "viewKey": "projects", "variant": "primary" },
         { "label": "View Logs", "viewKey": "logs", "variant": "secondary" }

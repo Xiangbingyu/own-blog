@@ -1,62 +1,102 @@
 {
-  "pageTitle": "DreamGong | Connect",
+  "pageTitle": "XiangBy | Connect",
   "heading": "Connect",
-  "name": "DreamGong",
+  "name": "XiangBy",
   "role": "AI Researcher · Retro Systems Builder",
   "bio": "我喜欢把 8-bit 视觉语言和现代智能系统结合起来，专注于本地化模型、复古交互与低延迟体验。",
   "motto": "Build slow, ship sharp.",
   "interests": ["Local-first AI", "Pixel Art", "LLM Systems", "Retro UI", "Creative Coding"],
-  "avatarUrl": "https://images.unsplash.com/photo-1545239351-ef35f43d514b?auto=format&fit=crop&w=640&q=80",
+  "avatarUrl": "./img/头像1.png",
   "lifeGallery": [
     {
-      "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=640&q=80",
-      "alt": "Morning street"
+      "src": "./img/实验室1.jpg",
+      "alt": "实验室1"
     },
     {
-      "src": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=640&q=80",
-      "alt": "Mountain trail"
+      "src": "./img/竞赛1.jpg",
+      "alt": "竞赛1"
     },
     {
-      "src": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=640&q=80",
-      "alt": "City night"
+      "src": "./img/竞赛2.jpg",
+      "alt": "竞赛2"
     },
     {
-      "src": "https://images.unsplash.com/photo-1494475673543-6a6a27143b16?auto=format&fit=crop&w=640&q=80",
-      "alt": "Coffee time"
+      "src": "./img/竞赛3.jpg",
+      "alt": "竞赛3"
     },
     {
-      "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=640&q=80",
-      "alt": "Sunset hills"
+      "src": "./img/访学1.jpg",
+      "alt": "访学1"
     },
     {
-      "src": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=640&q=80",
-      "alt": "Book shelf"
+      "src": "./img/访学2.jpg",
+      "alt": "访学2"
+    },
+    {
+      "src": "./img/访学3.jpg",
+      "alt": "访学3"
+    },
+    {
+      "src": "./img/访学4.jpg",
+      "alt": "访学4"
+    },
+    {
+      "src": "./img/访学5.jpg",
+      "alt": "访学5"
+    },
+    {
+      "src": "./img/访学6.jpg",
+      "alt": "访学6"
+    },
+    {
+      "src": "./img/访学7.jpg",
+      "alt": "访学7"
+    },
+    {
+      "src": "./img/过年1.jpg",
+      "alt": "过年1"
+    },
+    {
+      "src": "./img/雀巢1.jpg",
+      "alt": "雀巢1"
     }
   ],
   "portfolioGallery": [
     {
-      "src": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=80",
-      "alt": "Workbench"
+      "src": "./img/ai-music-manager.png",
+      "alt": "AI Music Manager"
     },
     {
-      "src": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=640&q=80",
-      "alt": "Code and notes"
+      "src": "./img/ai-town.png",
+      "alt": "AI Town"
     },
     {
-      "src": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&q=80",
-      "alt": "Circuit board"
+      "src": "./img/rokid-glasses-m.jpg",
+      "alt": "Rokid Glasses"
     },
     {
-      "src": "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=640&q=80",
-      "alt": "Creative tools"
+      "src": "./img/term-agent.png",
+      "alt": "Term Agent"
     },
     {
-      "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=640&q=80",
-      "alt": "Office view"
+      "src": "./img/webgl.jpg",
+      "alt": "WebGL"
     },
     {
-      "src": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=640&q=80",
-      "alt": "Server room"
+      "src": "./img/yisu-hotel.png",
+      "alt": "Yisu Hotel"
+    },
+    {
+      "src": "./img/幻境协创.png",
+      "alt": "幻境协创"
+    },
+    {
+      "src": "./img/reinforcement-learning.jpg",
+      "alt": "Reinforcement Learning"
+    },
+    {
+      "src": "./img/协创1.jpg",
+      "alt": "协创1"
     }
   ],
   "contacts": [
