@@ -249,6 +249,16 @@
     "contentPath": "./content/log-soul-automation.md"
   },
   {
+    "id": "log-auth-token-security",
+    "title": "用户登录安全逻辑：Token 管理与密码加密实战",
+    "summary": "深入解析 Access Token + Refresh Token 双 Token 机制、滑动窗口续期、BCrypt/Argon2 密码加密，以及 Spring Security 中 CSRF 与请求匹配的核心配置。",
+    "date": "2026-03-23",
+    "category": ["logs", "ideaLogs"],
+    "featuredOrder": 0,
+    "tags": ["Spring Security", "JWT", "BCrypt", "Token", "Security"],
+    "contentPath": "./content/log-auth-token-security.md"
+  },
+  {
     "id": "log-docker-milvus",
     "title": "Docker 部署与 Milvus 向量检索实战",
     "summary": "记录使用 Docker 容器化部署后端服务，并利用 Milvus 向量库实现高性能人脸模糊匹配的过程。",
