@@ -1,6 +1,7 @@
 import { setupChatModule } from "./chat-module.js";
 
 const nightModeStorageKey = "siteNightMode";
+const articlesCacheStorageKey = "siteArticlesCache";
 
 function setNightMode(enabled) {
   document.documentElement.classList.toggle("theme-night", enabled);
@@ -763,6 +764,47 @@ async function loadJson(path, errorMessage) {
   return response.json();
 }
 
+function loadArticlesFromCache() {
+  try {
+    const cached = window.localStorage.getItem(articlesCacheStorageKey);
+    if (!cached) {
+      return null;
+    }
+    const parsed = JSON.parse(cached);
+    return Array.isArray(parsed) ? parsed : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function saveArticlesToCache(articles) {
+  if (!Array.isArray(articles)) {
+    return;
+  }
+  try {
+    window.localStorage.setItem(articlesCacheStorageKey, JSON.stringify(articles));
+  } catch (error) {
+    void error;
+  }
+}
+
+async function fetchArticlesAndRefreshCache() {
+  const latestArticles = await loadJson("./data/articles.json", "Failed to load article data");
+  saveArticlesToCache(latestArticles);
+  return latestArticles;
+}
+
+function loadArticlesWithCache() {
+  const cachedArticles = loadArticlesFromCache();
+  if (cachedArticles) {
+    fetchArticlesAndRefreshCache().catch((error) => {
+      void error;
+    });
+    return Promise.resolve(cachedArticles);
+  }
+  return fetchArticlesAndRefreshCache();
+}
+
 async function init() {
   setNightMode(loadNightMode());
   setupPageTransition();
@@ -780,9 +822,9 @@ async function init() {
     connectProfilePromise = loadJson("./data/connect-profile.json", "Failed to load connect profile");
   } else if (pageType === "home") {
     connectProfilePromise = loadJson("./data/connect-profile.json", "Failed to load connect profile");
-    articlesPromise = loadJson("./data/articles.json", "Failed to load article data");
+    articlesPromise = loadArticlesWithCache();
   } else {
-    articlesPromise = loadJson("./data/articles.json", "Failed to load article data");
+    articlesPromise = loadArticlesWithCache();
   }
 
   const [siteConfig, subpageConfig] = await Promise.all([siteConfigPromise, subpageConfigPromise]);
